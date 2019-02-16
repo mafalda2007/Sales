@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Sales.Views.ProductsPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator} }">
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding Products}"> <!-- ViewModel -->
+            <ListView
+                ItemsSource="{Binding Products}"> <!-- atributo de Products que sirve para pintar la lista de Productos -->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
