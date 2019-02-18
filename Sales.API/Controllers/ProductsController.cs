@@ -15,16 +15,16 @@
         private DataContext db = new DataContext();
 
         // GET: api/Products
-        public IQueryable<Product> GetProducts()
+        public IQueryable<Products> GetProducts()
         {
             return db.Products;
         }
 
         // GET: api/Products/5
-        [ResponseType(typeof(Product))]
+        [ResponseType(typeof(Products))]
         public async Task<IHttpActionResult> GetProducts(int id)
         {
-            Product products = await db.Products.FindAsync(id);
+            Products products = await db.Products.FindAsync(id);
             if (products == null)
             {
                 return NotFound();
@@ -35,7 +35,7 @@
 
         // PUT: api/Products/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutProducts(int id, Product products)
+        public async Task<IHttpActionResult> PutProducts(int id, Products products)
         {
             if (!ModelState.IsValid)
             {
@@ -69,8 +69,8 @@
         }
 
         // POST: api/Products
-        [ResponseType(typeof(Product))]
-        public async Task<IHttpActionResult> PostProducts(Product products)
+        [ResponseType(typeof(Products))]
+        public async Task<IHttpActionResult> PostProducts(Products products)
         {
             if (!ModelState.IsValid)
             {
@@ -84,10 +84,10 @@
         }
 
         // DELETE: api/Products/5
-        [ResponseType(typeof(Product))]
+        [ResponseType(typeof(Products))]
         public async Task<IHttpActionResult> DeleteProducts(int id)
         {
-            Product products = await db.Products.FindAsync(id);
+            Products products = await db.Products.FindAsync(id);
             if (products == null)
             {
                 return NotFound();

@@ -9,7 +9,8 @@
         <ResourceDictionary>
             <!-- Locator -->
             <infra:InstanceLocator x:Key="Locator" />
-
+            <!-- Parameters -->
+            <x:String x:Key="UrlAPI">http://usuarios.crediguia.com.ar:44548</x:String>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

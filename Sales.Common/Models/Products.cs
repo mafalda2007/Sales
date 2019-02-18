@@ -3,7 +3,7 @@
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    public class Product
+    public class Products
     {
         [Key]
         #region Properties
@@ -20,5 +20,7 @@
             return this.Description;
         }
         #endregion
+
+
     }
 }
