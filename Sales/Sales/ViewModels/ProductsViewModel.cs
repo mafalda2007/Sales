@@ -41,9 +41,21 @@
         private async void LoadProducts()
         {
             this.IsRefreshing = true;
-            //var url = Application.Current.Resources["UrlAPI"].ToString(); // lo saco del diccionario de Recursos
+            // Chequeo de la Conexion a Internet 
+            var conection = await this.apiService.CheckConnection();
+            if (!conection.IsSuccess)
+            {
+                this.IsRefreshing = false;
+                await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    conection.Message,
+                    "Aceptar");
+                return;
+            }
+
+            var url = Application.Current.Resources["UrlAPI"].ToString(); // lo saco del diccionario de Recursos
             var response = await this.apiService.GetList<Products>(
-                "http://usuarios.crediguia.com.ar:44548", 
+                url, 
                 "/api",
                 "/Products");
             if (!response.IsSuccess)

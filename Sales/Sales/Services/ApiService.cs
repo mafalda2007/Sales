@@ -6,9 +6,40 @@
     using System.Threading.Tasks;
     using Common.Models;
     using Newtonsoft.Json;
+    using Plugin.Connectivity;
 
     public class ApiService
     {
+        // Chequear la coneccion 
+        public async Task<Response> CheckConnection()
+        {
+            if (!CrossConnectivity.Current.IsConnected)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = "Please turn on your internet settings.",
+                };
+            }
+
+            var isReachable = await CrossConnectivity.Current.IsRemoteReachable(
+                "google.com");
+            if (!isReachable)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = "Check you internet connection.",
+                };
+            }
+
+            return new Response
+            {
+                IsSuccess = true,
+                Message = "Ok",
+            };
+        }
+
         // Metodo Generico para Consumir de cualquier servicio API o cualquier lista
         public async Task<Response> GetList<T>(string urlBase, string prefix, string controller)
         {
