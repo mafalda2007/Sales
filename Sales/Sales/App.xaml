@@ -11,6 +11,9 @@
             <infra:InstanceLocator x:Key="Locator" />
             <!-- Parameters -->
             <x:String x:Key="UrlAPI">http://usuarios.crediguia.com.ar:44548</x:String>
+            <x:String x:Key="UrlPrefix">/api</x:String>
+            <x:String x:Key="UrlProductsController">/Products</x:String>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>
